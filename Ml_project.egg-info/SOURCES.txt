@@ -11,6 +11,8 @@ project/components/__init__.py
 project/constants/__init__.py
 project/entity/__init__.py
 project/exception/__init__.py
+project/exception/exception.py
 project/logging/__init__.py
+project/logging/logger.py
 project/pipeline/__init__.py
 project/utils/__init__.py
