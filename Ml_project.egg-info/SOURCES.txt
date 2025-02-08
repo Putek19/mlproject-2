@@ -8,8 +8,11 @@ Ml_project.egg-info/top_level.txt
 project/__init__.py
 project/cloud/__init__.py
 project/components/__init__.py
+project/components/data_ingestion.py
 project/constants/__init__.py
+project/constants/training_pipeline/__init__.py
 project/entity/__init__.py
+project/entity/config_entity.py
 project/exception/__init__.py
 project/exception/exception.py
 project/logging/__init__.py
