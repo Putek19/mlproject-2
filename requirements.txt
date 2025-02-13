@@ -8,4 +8,8 @@ bson
 scikit-learn
 dill
 pyaml
+seaborn
+matplotlib
+xgboost
+imblearn
 -e .

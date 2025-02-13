@@ -23,7 +23,5 @@ columns:
 
 numerical_columns:
   - seniorCitizen
-  - Partner
   - tenure
   - MonthlyCharges
-  - TotalCharges

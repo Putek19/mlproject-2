@@ -9,6 +9,7 @@ project/__init__.py
 project/cloud/__init__.py
 project/components/__init__.py
 project/components/data_ingestion.py
+project/components/data_transformation.py
 project/components/data_validation.py
 project/constants/__init__.py
 project/constants/training_pipeline/__init__.py
