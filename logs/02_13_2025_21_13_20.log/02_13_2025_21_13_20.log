@@ -1,0 +1,21 @@
+[2025-02-13 21:13:24,670] 14 root - INFO - Data ingestion started
+[2025-02-13 21:13:26,079] 66 root - INFO - Performed data split into training and testing sets.
+[2025-02-13 21:13:26,080] 72 root - INFO - Exporting training data and test data
+[2025-02-13 21:13:26,222] 77 root - INFO - Exported training data and test data
+[2025-02-13 21:13:26,235] 16 root - INFO - Data ingestion completed
+[2025-02-13 21:13:26,247] 20 root - INFO - Data validation started
+[2025-02-13 21:13:26,344] 32 root - INFO - Required number of columns: 21
+[2025-02-13 21:13:26,345] 33 root - INFO - Actual number of columns: 22
+[2025-02-13 21:13:26,355] 32 root - INFO - Required number of columns: 21
+[2025-02-13 21:13:26,355] 33 root - INFO - Actual number of columns: 22
+[2025-02-13 21:13:26,357] 44 root - INFO - Required number of numerical columns: 3
+[2025-02-13 21:13:26,357] 45 root - INFO - Actual number of numerical columns: 3
+[2025-02-13 21:13:26,359] 44 root - INFO - Required number of numerical columns: 3
+[2025-02-13 21:13:26,359] 45 root - INFO - Actual number of numerical columns: 3
+[2025-02-13 21:13:27,121] 22 root - INFO - Data validation completed
+[2025-02-13 21:13:27,122] 24 root - INFO - Data transformation started
+[2025-02-13 21:13:27,122] 60 root - INFO - Initiating data transformation...
+[2025-02-13 21:13:27,122] 62 root - INFO - Starting data transformation
+[2025-02-13 21:13:27,374] 87 root - INFO - Data transformation completed
+[2025-02-13 21:13:27,388] 38 root - INFO - Saving object to Artifacts\02_13_2025_21_13_21\data_transformation\transformed_object\preprocessing.pkl
+[2025-02-13 21:13:27,394] 29 root - INFO - Data transformation completed

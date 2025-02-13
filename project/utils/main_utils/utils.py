@@ -23,3 +23,21 @@ def write_yaml_file(filepath: str,content: object,replace: bool = False) -> None
             yaml.dump(content, file)
     except Exception as e:
         raise ProjectException(e, sys)
+    
+def save_numpy_Array(file_path: str, array: np.array) -> None:
+    try:
+        dir_path = os.path.dirname(file_path)
+        os.makedirs(dir_path, exist_ok=True)
+        with open(file_path, 'wb') as file:
+            np.save(file, array)
+    except Exception as e:
+        raise ProjectException(e, sys)
+
+def save_object(file_path: str, obj: object) -> None:
+    try:
+        logging.info(f"Saving object to {file_path}")
+        os.makedirs(os.path.dirname(file_path), exist_ok=True)
+        with open(file_path, 'wb') as file:
+            pickle.dump(obj, file)
+    except Exception as e:
+        raise ProjectException(e, sys)

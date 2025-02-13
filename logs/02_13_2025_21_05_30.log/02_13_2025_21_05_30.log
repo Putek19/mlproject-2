@@ -1,0 +1,18 @@
+[2025-02-13 21:05:35,288] 14 root - INFO - Data ingestion started
+[2025-02-13 21:05:36,922] 66 root - INFO - Performed data split into training and testing sets.
+[2025-02-13 21:05:36,922] 72 root - INFO - Exporting training data and test data
+[2025-02-13 21:05:37,036] 77 root - INFO - Exported training data and test data
+[2025-02-13 21:05:37,063] 16 root - INFO - Data ingestion completed
+[2025-02-13 21:05:37,076] 20 root - INFO - Data validation started
+[2025-02-13 21:05:37,169] 32 root - INFO - Required number of columns: 21
+[2025-02-13 21:05:37,170] 33 root - INFO - Actual number of columns: 22
+[2025-02-13 21:05:37,178] 32 root - INFO - Required number of columns: 21
+[2025-02-13 21:05:37,178] 33 root - INFO - Actual number of columns: 22
+[2025-02-13 21:05:37,180] 44 root - INFO - Required number of numerical columns: 3
+[2025-02-13 21:05:37,180] 45 root - INFO - Actual number of numerical columns: 3
+[2025-02-13 21:05:37,180] 44 root - INFO - Required number of numerical columns: 3
+[2025-02-13 21:05:37,180] 45 root - INFO - Actual number of numerical columns: 3
+[2025-02-13 21:05:38,030] 22 root - INFO - Data validation completed
+[2025-02-13 21:05:38,031] 24 root - INFO - Data transformation started
+[2025-02-13 21:05:38,032] 60 root - INFO - Initiating data transformation...
+[2025-02-13 21:05:38,032] 62 root - INFO - Starting data transformation
