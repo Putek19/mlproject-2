@@ -1,9 +1,11 @@
 from project.components.data_ingestion import DataIngestion
 from project.components.data_validation import DataValidation
 from project.components.data_transformation import DataTransformation
+
+from project.components.model_trainer import ModelTrainer
 from project.exception.exception import ProjectException
 from project.logging.logger import logging
-from project.entity.config_entity import DataIngestionConfig,DataValidationConfig,DataTransformationConfig
+from project.entity.config_entity import DataIngestionConfig,DataValidationConfig,DataTransformationConfig,ModelTrainerConfig
 from project.entity.config_entity import TrainingPipelineConfig
 import sys
 if __name__ == "__main__":
@@ -28,6 +30,14 @@ if __name__ == "__main__":
         data_transformation_artifact = data_transformation.initiate_data_transformation()
         logging.info("Data transformation completed")
         print(data_transformation_artifact)
+
+        logging.info("Model training started")
+        model_trainer_config = ModelTrainerConfig(training_pipeline_config)
+        model_trainer = ModelTrainer(data_transformation_artifact=data_transformation_artifact, model_trainer_config=model_trainer_config)
+        model_trainer_artifact = model_trainer.initiate_model_training()
+        print(model_trainer_artifact)
+        logging.info("Model training completed")
+
 
     except Exception as e:
         raise ProjectException(e, sys)
