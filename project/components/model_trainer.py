@@ -22,6 +22,10 @@ from sklearn.tree import DecisionTreeClassifier
 
 from sklearn.model_selection import RandomizedSearchCV,StratifiedKFold
 
+import dagshub
+dagshub.init(repo_owner='Putek19', repo_name='mlproject-2', mlflow=True)
+
+
 
 class ModelTrainer:
     def __init__(self, model_trainer_config: ModelTrainerConfig, data_transformation_artifact: DataTransformationArtifact): 
@@ -90,6 +94,7 @@ class ModelTrainer:
 
             churnModel = ChurnModel(prepocessor=preprocessor,model=best_model)
             save_object(self.model_trainer_config.trained_model_file_path,churnModel)
+            save_object("final_model/model.pkl", best_model)
 
             model_trainer_artifact = ModelTrainerArtifact(
                 trained_model_file_path=self.model_trainer_config.trained_model_file_path,

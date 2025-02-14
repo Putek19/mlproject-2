@@ -13,4 +13,5 @@ matplotlib
 xgboost
 imblearn
 mlflow
+dagshub
 -e .
