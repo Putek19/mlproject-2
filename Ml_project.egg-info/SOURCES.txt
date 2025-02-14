@@ -11,6 +11,7 @@ project/components/__init__.py
 project/components/data_ingestion.py
 project/components/data_transformation.py
 project/components/data_validation.py
+project/components/model_trainer.py
 project/constants/__init__.py
 project/constants/training_pipeline/__init__.py
 project/entity/__init__.py
@@ -24,3 +25,8 @@ project/pipeline/__init__.py
 project/utils/__init__.py
 project/utils/main_utils/__init__.py
 project/utils/main_utils/utils.py
+project/utils/ml_utils/__init__.py
+project/utils/ml_utils/metric/__init__.py
+project/utils/ml_utils/metric/classification_metric.py
+project/utils/ml_utils/model/__init__.py
+project/utils/ml_utils/model/estimator.py
