@@ -22,6 +22,7 @@ project/exception/exception.py
 project/logging/__init__.py
 project/logging/logger.py
 project/pipeline/__init__.py
+project/pipeline/training_pipeline.py
 project/utils/__init__.py
 project/utils/main_utils/__init__.py
 project/utils/main_utils/utils.py

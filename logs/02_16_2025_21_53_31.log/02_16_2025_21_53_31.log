@@ -1,0 +1,31 @@
+[2025-02-16 21:53:43,116] 74 dagshub.auth.tokens - INFO - Removed expired tokens from the token cache
+[2025-02-16 21:53:50,846] 1025 httpx - INFO - HTTP Request: POST https://dagshub.com/login/oauth/middleman "HTTP/1.1 200 OK"
+[2025-02-16 21:53:51,243] 1025 httpx - INFO - HTTP Request: POST https://dagshub.com/login/oauth/access_token "HTTP/1.1 200 OK"
+[2025-02-16 21:53:51,472] 1025 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[2025-02-16 21:53:51,496] 107 dagshub - INFO - Accessing as Putek19
+[2025-02-16 21:53:51,966] 1025 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/repos/Putek19/mlproject-2 "HTTP/1.1 200 OK"
+[2025-02-16 21:53:52,413] 1025 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[2025-02-16 21:53:52,427] 107 dagshub - INFO - Initialized MLflow to track repo "Putek19/mlproject-2"
+[2025-02-16 21:53:52,429] 107 dagshub - INFO - Repository Putek19/mlproject-2 initialized!
+[2025-02-16 21:53:53,757] 23 root - INFO - Data ingestion started
+[2025-02-16 21:53:55,282] 66 root - INFO - Performed data split into training and testing sets.
+[2025-02-16 21:53:55,284] 72 root - INFO - Exporting training data and test data
+[2025-02-16 21:53:55,438] 77 root - INFO - Exported training data and test data
+[2025-02-16 21:53:55,457] 26 root - INFO - Data ingestion completed and artifact: DataIngestionArtifact(trained_file_path='Artifacts\\02_16_2025_21_53_33\\data_ingestion\\ingested\\train.csv', test_file_path='Artifacts\\02_16_2025_21_53_33\\data_ingestion\\ingested\\test.csv')
+[2025-02-16 21:53:55,457] 34 root - INFO - Data validation started
+[2025-02-16 21:53:55,583] 32 root - INFO - Required number of columns: 21
+[2025-02-16 21:53:55,583] 33 root - INFO - Actual number of columns: 22
+[2025-02-16 21:53:55,583] 32 root - INFO - Required number of columns: 21
+[2025-02-16 21:53:55,584] 33 root - INFO - Actual number of columns: 22
+[2025-02-16 21:53:55,586] 44 root - INFO - Required number of numerical columns: 3
+[2025-02-16 21:53:55,586] 45 root - INFO - Actual number of numerical columns: 3
+[2025-02-16 21:53:55,588] 44 root - INFO - Required number of numerical columns: 3
+[2025-02-16 21:53:55,588] 45 root - INFO - Actual number of numerical columns: 3
+[2025-02-16 21:53:56,488] 37 root - INFO - Data validation completed and artifact: DataValidationArtifact(validation_status=None, valid_train_file_path='Artifacts\\02_16_2025_21_53_33\\data_ingestion\\ingested\\train.csv', valid_test_file_path='Artifacts\\02_16_2025_21_53_33\\data_ingestion\\ingested\\test.csv', invalid_train_file_path=None, invalid_test_file_path=None, drift_report_file_path='Artifacts\\02_16_2025_21_53_33\\data_validation\\drift_report\\report.yaml')
+[2025-02-16 21:53:56,488] 45 root - INFO - Data transformation started
+[2025-02-16 21:53:56,489] 61 root - INFO - Initiating data transformation...
+[2025-02-16 21:53:56,489] 63 root - INFO - Starting data transformation
+[2025-02-16 21:53:57,331] 96 root - INFO - Data transformation completed
+[2025-02-16 21:53:57,348] 40 root - INFO - Saving object to Artifacts\02_16_2025_21_53_33\data_transformation\transformed_object\preprocessing.pkl
+[2025-02-16 21:53:57,355] 48 root - INFO - Data transformation completed and artifact: DataTransformationArtifact(transformed_object_file_path='Artifacts\\02_16_2025_21_53_33\\data_transformation\\transformed_object\\preprocessing.pkl', transformed_train_file_path='Artifacts\\02_16_2025_21_53_33\\data_transformation\\transformed\\train.npy', transformed_test_file_path='Artifacts\\02_16_2025_21_53_33\\data_transformation\\transformed\\test.npy')
+[2025-02-16 21:53:57,356] 56 root - INFO - Model training started

@@ -40,13 +40,14 @@ class ModelTrainer:
             f1_score=classificationmetric.f1_score
             precision_score=classificationmetric.precision_score
             recall_score=classificationmetric.recall_score
-
+            
+            print(f"f1_score: {f1_score}, precision: {precision_score}, recall: {recall_score}")
             
 
             mlflow.log_metric("f1_score",f1_score)
             mlflow.log_metric("precision",precision_score)
             mlflow.log_metric("recall_score",recall_score)
-            mlflow.sklearn.log_model(best_model,"model")
+            mlflow.sklearn.log_model(best_model,"model") 
         
 
     
@@ -82,7 +83,7 @@ class ModelTrainer:
             y_test_pred = best_model.predict(X_test)
 
             classification_train_metric = get_classification_metrics(y_true=y_train,y_pred=y_train_pred)
-            self.track_mlflow(best_model,classification_train_metric)
+            self.track_mlflow(best_model,classification_train_metric,)
 
             classification_test_metric = get_classification_metrics(y_true=y_test,y_pred=y_test_pred)
             self.track_mlflow(best_model,classification_test_metric)
@@ -93,7 +94,7 @@ class ModelTrainer:
             os.makedirs(model_dir_path, exist_ok=True)
 
             churnModel = ChurnModel(prepocessor=preprocessor,model=best_model)
-            save_object(self.model_trainer_config.trained_model_file_path,churnModel)
+            save_object(self.model_trainer_config.trained_model_file_path,obj = ChurnModel)
             save_object("final_model/model.pkl", best_model)
 
             model_trainer_artifact = ModelTrainerArtifact(

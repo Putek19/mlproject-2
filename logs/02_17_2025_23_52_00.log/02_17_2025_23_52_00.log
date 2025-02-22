@@ -1,0 +1,32 @@
+[2025-02-17 23:52:14,457] 1025 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[2025-02-17 23:52:14,480] 107 dagshub - INFO - Accessing as Putek19
+[2025-02-17 23:52:14,769] 1025 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/repos/Putek19/mlproject-2 "HTTP/1.1 200 OK"
+[2025-02-17 23:52:14,978] 1025 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[2025-02-17 23:52:14,982] 107 dagshub - INFO - Initialized MLflow to track repo "Putek19/mlproject-2"
+[2025-02-17 23:52:14,982] 107 dagshub - INFO - Repository Putek19/mlproject-2 initialized!
+[2025-02-17 23:52:16,512] 23 root - INFO - Data ingestion started
+[2025-02-17 23:52:17,986] 66 root - INFO - Performed data split into training and testing sets.
+[2025-02-17 23:52:17,986] 72 root - INFO - Exporting training data and test data
+[2025-02-17 23:52:18,148] 77 root - INFO - Exported training data and test data
+[2025-02-17 23:52:18,167] 26 root - INFO - Data ingestion completed and artifact: DataIngestionArtifact(trained_file_path='Artifacts\\02_17_2025_23_52_01\\data_ingestion\\ingested\\train.csv', test_file_path='Artifacts\\02_17_2025_23_52_01\\data_ingestion\\ingested\\test.csv')
+[2025-02-17 23:52:18,169] 34 root - INFO - Data validation started
+[2025-02-17 23:52:18,283] 32 root - INFO - Required number of columns: 21
+[2025-02-17 23:52:18,283] 33 root - INFO - Actual number of columns: 22
+[2025-02-17 23:52:18,283] 32 root - INFO - Required number of columns: 21
+[2025-02-17 23:52:18,283] 33 root - INFO - Actual number of columns: 22
+[2025-02-17 23:52:18,283] 44 root - INFO - Required number of numerical columns: 3
+[2025-02-17 23:52:18,283] 45 root - INFO - Actual number of numerical columns: 3
+[2025-02-17 23:52:18,283] 44 root - INFO - Required number of numerical columns: 3
+[2025-02-17 23:52:18,283] 45 root - INFO - Actual number of numerical columns: 3
+[2025-02-17 23:52:19,119] 37 root - INFO - Data validation completed and artifact: DataValidationArtifact(validation_status=None, valid_train_file_path='Artifacts\\02_17_2025_23_52_01\\data_ingestion\\ingested\\train.csv', valid_test_file_path='Artifacts\\02_17_2025_23_52_01\\data_ingestion\\ingested\\test.csv', invalid_train_file_path=None, invalid_test_file_path=None, drift_report_file_path='Artifacts\\02_17_2025_23_52_01\\data_validation\\drift_report\\report.yaml')
+[2025-02-17 23:52:19,119] 45 root - INFO - Data transformation started
+[2025-02-17 23:52:19,119] 61 root - INFO - Initiating data transformation...
+[2025-02-17 23:52:19,119] 63 root - INFO - Starting data transformation
+[2025-02-17 23:52:19,949] 96 root - INFO - Data transformation completed
+[2025-02-17 23:52:19,956] 40 root - INFO - Saving object to Artifacts\02_17_2025_23_52_01\data_transformation\transformed_object\preprocessing.pkl
+[2025-02-17 23:52:19,961] 48 root - INFO - Data transformation completed and artifact: DataTransformationArtifact(transformed_object_file_path='Artifacts\\02_17_2025_23_52_01\\data_transformation\\transformed_object\\preprocessing.pkl', transformed_train_file_path='Artifacts\\02_17_2025_23_52_01\\data_transformation\\transformed\\train.npy', transformed_test_file_path='Artifacts\\02_17_2025_23_52_01\\data_transformation\\transformed\\test.npy')
+[2025-02-17 23:52:19,964] 56 root - INFO - Model training started
+[2025-02-18 00:14:38,721] 40 root - INFO - Saving object to Artifacts\02_17_2025_23_52_01\model_trainer\trained_model\model.pkl
+[2025-02-18 00:14:38,723] 40 root - INFO - Saving object to final_model/model.pkl
+[2025-02-18 00:14:38,739] 105 root - INFO - Model training completed successfully
+[2025-02-18 00:14:38,740] 59 root - INFO - Model training completed and artifact: ModelTrainerArtifact(trained_model_file_path='Artifacts\\02_17_2025_23_52_01\\model_trainer\\trained_model\\model.pkl', train_metric_artifact=ClassificationMetricArtifact(f1_score=0.8039874551971327, precision_score=0.7486441385064664, recall_score=0.8681664247701983), test_metric_artifact=ClassificationMetricArtifact(f1_score=0.614, precision_score=0.4865293185419968, recall_score=0.8319783197831978))

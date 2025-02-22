@@ -8,6 +8,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import LabelEncoder,OneHotEncoder
+from imblearn.over_sampling import SMOTE  
 
 
 from project.constants.training_pipeline import TARGET_COLUMN
@@ -44,7 +45,7 @@ class DataTransformation:
             
 
             num_pipeline = Pipeline(steps=[('imputer', imputer),('std_scaler', StandardScaler())])
-            binary_pipeline = Pipeline(steps=[('encoder', OneHotEncoder(drop='if_binary', sparse_output=False))])
+            binary_pipeline = Pipeline(steps=[('encoder', OneHotEncoder(drop='first', sparse_output=False))])
             cat_pipeline = Pipeline(steps=[('encoder',OneHotEncoder(drop='first',sparse_output=False) )])
             preprocessor = ColumnTransformer(transformers=[('num', num_pipeline, numeric_columns),
                                                            ('binary', binary_pipeline, binary_columns),
@@ -54,7 +55,7 @@ class DataTransformation:
         except Exception as e:
             raise ProjectException(e, sys)
 
-        
+    
 
     def initiate_data_transformation(self)-> DataTransformationArtifact:
         logging.info("Initiating data transformation...")
@@ -62,40 +63,53 @@ class DataTransformation:
             logging.info("Starting data transformation")
             train_df = DataTransformation.read_data(self.data_validation_artifact.valid_train_file_path)
             test_df = DataTransformation.read_data(self.data_validation_artifact.valid_test_file_path)
-            train_df['TotalCharges'] = train_df['TotalCharges'].replace(' ', np.nan)
-            train_df['TotalCharges'] = train_df['TotalCharges'].astype(float)
-            test_df['TotalCharges'] = test_df['TotalCharges'].replace(' ', np.nan)
-            test_df['TotalCharges'] = test_df['TotalCharges'].astype(float)
+            
+            # Konwersja 'TotalCharges' na float
+            train_df['TotalCharges'] = train_df['TotalCharges'].replace(' ', np.nan).astype(float)
+            test_df['TotalCharges'] = test_df['TotalCharges'].replace(' ', np.nan).astype(float)
 
-            input_feature_train_df = train_df.drop(columns=[TARGET_COLUMN],axis=1)
-            target_train_df = train_df[TARGET_COLUMN]
-            target_train_df = target_train_df.map({'Yes': 1, 'No': 0})
+            # Podział na cechy i target
+            input_feature_train_df = train_df.drop(columns=[TARGET_COLUMN], axis=1)
+            target_train_df = train_df[TARGET_COLUMN].map({'Yes': 1, 'No': 0})
+            
+            input_feature_test_df = test_df.drop(columns=[TARGET_COLUMN], axis=1)
+            target_test_df = test_df[TARGET_COLUMN].map({'Yes': 1, 'No': 0})
 
-
-            input_feature_test_df = test_df.drop(columns=[TARGET_COLUMN],axis=1)
-            target_test_df = test_df[TARGET_COLUMN]
-            target_test_df = target_test_df.map({'Yes': 1, 'No': 0})
-
+            # Przetwarzanie danych
             preprocessor = self.get_data_transformer_object()
             preprocessor_object = preprocessor.fit(input_feature_train_df)
-
+            
             input_feature_train_transformed = preprocessor_object.transform(input_feature_train_df)
             input_feature_test_transformed = preprocessor_object.transform(input_feature_test_df)
 
-            train_arr = np.c_[input_feature_train_transformed, np.array(target_train_df)]
-            test_arr = np.c_[input_feature_test_transformed, np.array(target_test_df)]
+            # Zastosuj SMOTE tylko do danych treningowych
+            sm = SMOTE(random_state=42)
+            input_feature_train_resampled, target_train_resampled = sm.fit_resample(
+                input_feature_train_transformed, 
+                target_train_df
+            )
+
+            input_feature_test_resampled, target_test_resampled = sm.fit_resample(
+                input_feature_test_transformed,
+                target_test_df
+            )
+
+            # Przygotuj finalne tablice numpy
+            train_arr = np.c_[input_feature_train_resampled, target_train_resampled]
+            test_arr = np.c_[input_feature_test_resampled, target_test_resampled]
+
             logging.info("Data transformation completed")
 
+            # Zapis wyników
             save_numpy_Array(self.data_transformation_config.transformed_train_file_path, train_arr)
             save_numpy_Array(self.data_transformation_config.transformed_test_file_path, test_arr)
             save_object(self.data_transformation_config.transformed_object_file_path, preprocessor_object)
-            save_object("final_models/preprocessor.pkl", preprocessor_object)
-            data_transformation_artifact = DataTransformationArtifact(
-                transformed_object_file_path=self.data_transformation_config.transformed_object_file_path,
-                transformed_train_file_path= self.data_transformation_config.transformed_train_file_path,
-                transformed_test_file_path= self.data_transformation_config.transformed_test_file_path)
 
-            return data_transformation_artifact
+            return DataTransformationArtifact(
+                transformed_object_file_path=self.data_transformation_config.transformed_object_file_path,
+                transformed_train_file_path=self.data_transformation_config.transformed_train_file_path,
+                transformed_test_file_path=self.data_transformation_config.transformed_test_file_path
+            )
 
         except Exception as e:
             raise ProjectException(e, sys)

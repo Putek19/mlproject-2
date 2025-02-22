@@ -1,0 +1,22 @@
+[2025-02-16 21:21:49,599] 1025 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[2025-02-16 21:21:49,617] 107 dagshub - INFO - Accessing as Putek19
+[2025-02-16 21:21:49,856] 1025 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/repos/Putek19/mlproject-2 "HTTP/1.1 200 OK"
+[2025-02-16 21:21:50,092] 1025 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[2025-02-16 21:21:50,097] 107 dagshub - INFO - Initialized MLflow to track repo "Putek19/mlproject-2"
+[2025-02-16 21:21:50,100] 107 dagshub - INFO - Repository Putek19/mlproject-2 initialized!
+[2025-02-16 21:21:56,283] 23 root - INFO - Data ingestion started
+[2025-02-16 21:21:57,775] 66 root - INFO - Performed data split into training and testing sets.
+[2025-02-16 21:21:57,776] 72 root - INFO - Exporting training data and test data
+[2025-02-16 21:21:57,950] 77 root - INFO - Exported training data and test data
+[2025-02-16 21:21:57,968] 26 root - INFO - Data ingestion completed and artifact: DataIngestionArtifact(trained_file_path='Artifacts\\02_16_2025_21_21_38\\data_ingestion\\ingested\\train.csv', test_file_path='Artifacts\\02_16_2025_21_21_38\\data_ingestion\\ingested\\test.csv')
+[2025-02-16 21:21:57,969] 34 root - INFO - Data validation started
+[2025-02-16 21:21:58,115] 32 root - INFO - Required number of columns: 21
+[2025-02-16 21:21:58,115] 33 root - INFO - Actual number of columns: 22
+[2025-02-16 21:21:58,115] 32 root - INFO - Required number of columns: 21
+[2025-02-16 21:21:58,115] 33 root - INFO - Actual number of columns: 22
+[2025-02-16 21:21:58,117] 44 root - INFO - Required number of numerical columns: 3
+[2025-02-16 21:21:58,117] 45 root - INFO - Actual number of numerical columns: 3
+[2025-02-16 21:21:58,118] 44 root - INFO - Required number of numerical columns: 3
+[2025-02-16 21:21:58,119] 45 root - INFO - Actual number of numerical columns: 3
+[2025-02-16 21:21:59,056] 37 root - INFO - Data validation completed and artifact: DataValidationArtifact(validation_status=None, valid_train_file_path='Artifacts\\02_16_2025_21_21_38\\data_ingestion\\ingested\\train.csv', valid_test_file_path='Artifacts\\02_16_2025_21_21_38\\data_ingestion\\ingested\\test.csv', invalid_train_file_path=None, invalid_test_file_path=None, drift_report_file_path='Artifacts\\02_16_2025_21_21_38\\data_validation\\drift_report\\report.yaml')
+[2025-02-16 21:21:59,057] 45 root - INFO - Data transformation started
