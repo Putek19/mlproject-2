@@ -47,11 +47,16 @@ def save_object(file_path: str, obj: object) -> None:
 
 def load_object(file_path: str) -> object:
     try:
-        if not os.path.exists(file_path):
-            raise Exception(f"File not found at {file_path}")
-        with open(file_path, 'rb') as file:
-            print(file)
-            return pickle.load(file)
+        if isinstance(file_path, (str,bytes,os.PathLike)):
+            if not os.path.exists(file_path):
+                raise Exception(f"File not found at {file_path}")
+            with open(file_path, 'rb') as file:
+                print(file)
+                return pickle.load(file)
+        else:
+            file_path.seek(0)
+            return pickle.load(file_path)
+
     except Exception as e:
         raise ProjectException(e, sys)
 

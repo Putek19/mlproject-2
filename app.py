@@ -2,6 +2,8 @@ import sys
 import os
 
 import certifi
+
+from project.components.cloud.s3_helper import S3Helper
 ca = certifi.where()
 
 from dotenv import load_dotenv
@@ -62,24 +64,48 @@ async def train_route():
         raise ProjectException(e,sys)
 
 
-@app.post("/predict")
-async def predict_route(request: Request,file: UploadFile = File(...)):
-    try:
-        df = pd.read_csv(file.file)
-        preprocessor = load_object("final_model/preprocessor.pkl")
-        final_model = load_object("final_model/model.pkl")
-        churn_model = ChurnModel(prepocessor=preprocessor,model=final_model)
-        print(df.iloc[0])
-        y_pred = churn_model.predict(df)
-        print(y_pred)
-        df['predicted_column'] = y_pred
-        print(df['predicted_column'])
+from io import BytesIO
+from botocore.exceptions import NoCredentialsError
+from project.constants.training_pipeline import TRAINING_BUCKET_NAME
+import boto3
 
-        df.to_csv("prediction/output.csv")
-        table_html = df.to_html(classes="table table-striped")
-        return templates.TemplateResponse("table.html", {"request": request, "table": table_html})
+@app.post("/predict")
+async def predict_route(request: Request, file: UploadFile = File(...)):
+    try:
+        s3_helper = S3Helper()  # Initialize helper
+        bucket_name = TRAINING_BUCKET_NAME
+        prefix = "final_model/"
+
+        # Get latest model key
+        latest_model_prefix = s3_helper.get_latest_model_key(bucket_name, prefix)
+        
+        # Load model and preprocessor
+        preprocessor = s3_helper.load_from_s3(
+            bucket_name,
+            f"{latest_model_prefix}preprocessor.pkl"
+        )
+        model = s3_helper.load_from_s3(
+            bucket_name,
+            f"{latest_model_prefix}model.pkl"
+        )
+
+        # Rest of your prediction logic
+        churn_model = ChurnModel(prepocessor=preprocessor, model=model)
+        df = pd.read_csv(file.file)
+        y_pred = churn_model.predict(df)
+
+       
+
+    
+       
+        df['predicted_column'] = y_pred
+    
+        
+        return templates.TemplateResponse("table.html", {"request": request, "table": df.to_html(classes="table table-striped")})
     except Exception as e:
-        raise ProjectException(e,sys)
+        raise ProjectException(e, sys)
+
+
 
 if __name__=="__main__":
     try:
