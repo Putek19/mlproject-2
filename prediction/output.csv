@@ -1,0 +1,21 @@
+,customerID,gender,SeniorCitizen,Partner,Dependents,tenure,PhoneService,MultipleLines,InternetService,OnlineSecurity,OnlineBackup,DeviceProtection,TechSupport,StreamingTV,StreamingMovies,Contract,PaperlessBilling,PaymentMethod,MonthlyCharges,TotalCharges,Churn  ,predicted_column
+0,1234-ABCDE,Male,0,Yes,No,7,Yes,No,Fiber optic,No,Yes,No,No,Yes,Yes,Month-to-month,Yes,Electronic check,89.9,629.3,Yes  ,1.0
+1,2345-BCDEF,Female,1,No,Yes,24,No,No phone service,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,No,Mailed check,19.99,479.76,No  ,0.0
+2,3456-CDEFG,Male,0,Yes,Yes,3,Yes,Yes,DSL,Yes,No,Yes,Yes,No,No,Month-to-month,Yes,Credit card (automatic),54.75,164.25,No  ,1.0
+3,4567-DEFGH,Female,0,No,No,60,Yes,No,Fiber optic,No,No,Yes,No,Yes,No,One year,No,Bank transfer (automatic),99.5,5970.0,No  ,0.0
+4,5678-EFGHI,Male,0,Yes,No,18,Yes,Yes,DSL,No,Yes,No,No,No,No,Month-to-month,Yes,Electronic check,67.3,1211.4,Yes  ,1.0
+5,6789-FGHIJ,Female,1,No,Yes,48,No,No phone service,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,Yes,Credit card (automatic),22.45,1077.6,No  ,0.0
+6,7890-GHIJK,Male,0,No,No,1,Yes,No,Fiber optic,No,No,No,No,No,No,Month-to-month,No,Mailed check,75.2,75.2,Yes  ,1.0
+7,8901-HIJKL,Female,0,Yes,Yes,36,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,One year,No,Bank transfer (automatic),82.15,2957.4,No  ,0.0
+8,9012-IJKLM,Male,0,No,No,12,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Electronic check,21.5,258.0,Yes  ,1.0
+9,0123-JKLMA,Female,1,Yes,No,6,No,No phone service,DSL,No,No,Yes,No,No,No,Month-to-month,Yes,Mailed check,45.6,273.6,Yes  ,1.0
+10,1122-MNBVC,Male,0,No,Yes,72,Yes,Yes,Fiber optic,Yes,Yes,Yes,Yes,Yes,Yes,Two year,Yes,Bank transfer (automatic),110.0,7920.0,No  ,0.0
+11,2233-NBVCX,Female,0,Yes,No,9,Yes,No,DSL,No,Yes,No,Yes,No,Yes,Month-to-month,No,Credit card (automatic),63.4,570.6,No  ,0.0
+12,3344-BVCXY,Male,1,No,Yes,28,Yes,Yes,Fiber optic,No,No,No,No,Yes,Yes,One year,Yes,Electronic check,95.75,2681.0,Yes  ,1.0
+13,4455-CXYZA,Female,0,No,No,45,No,No phone service,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,No,Mailed check,24.99,1124.55,No  ,0.0
+14,5566-DXYZB,Male,0,Yes,Yes,15,Yes,Yes,DSL,Yes,No,Yes,No,No,No,Month-to-month,Yes,Bank transfer (automatic),58.9,883.5,Yes  ,0.0
+15,6677-EXYZC,Female,0,No,No,33,Yes,No,Fiber optic,No,Yes,Yes,No,Yes,No,Month-to-month,No,Electronic check,88.45,2918.85,No  ,1.0
+16,7788-FXYZD,Male,1,Yes,No,2,Yes,Yes,DSL,No,No,No,No,No,No,Month-to-month,Yes,Credit card (automatic),49.3,98.6,Yes  ,1.0
+17,8899-GXYZE,Female,0,No,Yes,66,Yes,Yes,Fiber optic,Yes,Yes,Yes,Yes,Yes,Yes,Two year,Yes,Mailed check,104.75,6913.5,No  ,0.0
+18,9900-HXYZF,Male,0,No,No,4,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Bank transfer (automatic),20.1,80.4,No  ,0.0
+19,0011-IXYZG,Female,0,Yes,Yes,19,Yes,Yes,DSL,No,Yes,No,Yes,No,Yes,One year,Yes,Electronic check,73.6,1398.4,Yes  ,0.0

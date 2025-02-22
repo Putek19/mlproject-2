@@ -23,6 +23,8 @@ import pandas as pd
 
 from project.utils.main_utils.utils import load_object
 
+from project.utils.ml_utils.model.estimator import ChurnModel
+
 client = pymongo.MongoClient(mongo_db_url)
 
 from project.constants.training_pipeline import DATA_INGESTION_DATABASE_NAME,DATA_INGESTION_COLLECTION_NAME
@@ -41,6 +43,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+from fastapi.templating import Jinja2Templates
+templates = Jinja2Templates(directory="./templates")
 
 @app.get("/", tags = ["authentication"])
 async def index():
@@ -54,6 +58,26 @@ async def train_route():
         return Response("Training successful !!")
 
 
+    except Exception as e:
+        raise ProjectException(e,sys)
+
+
+@app.post("/predict")
+async def predict_route(request: Request,file: UploadFile = File(...)):
+    try:
+        df = pd.read_csv(file.file)
+        preprocessor = load_object("final_model/preprocessor.pkl")
+        final_model = load_object("final_model/model.pkl")
+        churn_model = ChurnModel(prepocessor=preprocessor,model=final_model)
+        print(df.iloc[0])
+        y_pred = churn_model.predict(df)
+        print(y_pred)
+        df['predicted_column'] = y_pred
+        print(df['predicted_column'])
+
+        df.to_csv("prediction/output.csv")
+        table_html = df.to_html(classes="table table-striped")
+        return templates.TemplateResponse("table.html", {"request": request, "table": table_html})
     except Exception as e:
         raise ProjectException(e,sys)
 

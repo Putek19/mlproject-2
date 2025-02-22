@@ -67,6 +67,8 @@ class DataTransformation:
             # Konwersja 'TotalCharges' na float
             train_df['TotalCharges'] = train_df['TotalCharges'].replace(' ', np.nan).astype(float)
             test_df['TotalCharges'] = test_df['TotalCharges'].replace(' ', np.nan).astype(float)
+            train_df.drop(['customerID'],axis=1,inplace=True)
+            test_df.drop(['customerID'],axis=1,inplace=True)
 
             # Podział na cechy i target
             input_feature_train_df = train_df.drop(columns=[TARGET_COLUMN], axis=1)
