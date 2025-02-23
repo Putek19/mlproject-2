@@ -108,7 +108,5 @@ async def predict_route(request: Request, file: UploadFile = File(...)):
 
 
 if __name__=="__main__":
-    try:
-        app_run(app, host= "localhost",port=8000)
-    except Exception as e:
-        raise ProjectException(e,sys)
+    app_run(app, host= "localhost",port=8000)
+    
