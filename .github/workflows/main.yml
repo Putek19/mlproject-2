@@ -2,8 +2,8 @@ name: workflow
 
 on:
   push:
-   branches:
-    -main
+    branches:
+      - main
   path-ignore:
     - "README.md"
 
@@ -17,7 +17,7 @@ jobs:
 
       - name: Lint Code
         uses: echo "Linting repository"
-        
+
       - name: Run unit tests
         uses: echo "Running unit tests"
 
